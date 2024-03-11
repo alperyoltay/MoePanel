@@ -1,32 +1,32 @@
-# Moe Panel
- Admin panel for Uguu and Pomf which makes it easier to remove and blacklist files.
+#MoePanel
+ Uguu ve Pomf için dosyaları kaldırmayı ve kara listeye almayı kolaylaştıran yönetici paneli.
  
-# Features
-* Information about number of files uploaded & storage used.
-* Search files uploaded by hash/filename/etc.
-* Blacklist or delete files.
-* Blacklist or delete all files related to IP.
-* Search and manage blacklist database.
+#Özellikler
+* Yüklenen dosya sayısı ve kullanılan depolama alanı hakkında bilgiler.
+* Karma/dosya adı/vb. tarafından yüklenen dosyaları arayın.
+* Dosyaları kara listeye alın veya silin.
+* IP ile ilgili tüm dosyaları kara listeye alın veya silin.
+* Kara liste veritabanını arayın ve yönetin.
 
-More features such as settings will come in a later release.
+Ayarlar gibi daha fazla özellik daha sonraki bir sürümde gelecektir.
  
-# Screenshots
+# Ekran görüntüsü
 <img width="548" alt="Screenshot 2021-07-07 at 19 55 58" src="https://user-images.githubusercontent.com/2499891/124806933-87e7cc80-df5d-11eb-8715-c9bb184b8b8a.png">
 <img width="1680" alt="Screenshot 2021-07-07 at 19 55 25" src="https://user-images.githubusercontent.com/2499891/124806958-8dddad80-df5d-11eb-8104-7685fd349f2c.png">
 <img width="1678" alt="Screenshot 2021-07-07 at 19 58 39" src="https://user-images.githubusercontent.com/2499891/124807158-c4b3c380-df5d-11eb-873f-57a0e8df5428.png">
 <img width="1680" alt="Screenshot 2021-07-07 at 19 55 40" src="https://user-images.githubusercontent.com/2499891/124806978-933af800-df5d-11eb-9e58-ba2202c79aea.png">
 
-# Installation
-First of all you will need a working Uguu/Pomf installation set up, after that it's rather easy.
+#Kurulum
+Öncelikle çalışan bir user/Pomf kurulum kurulumuna ihtiyacınız olacak, bundan sonrası oldukça kolay.
 
-**You need to run the latest version of Uguu/Pomf for this panel to work since it introduced some DB changes!**
+**Bazı veritabanı değişiklikleri getirdiğinden bu panelin çalışması için user/Pomf'un en son sürümünü çalıştırmanız gerekir.**
 
-#### Clone the repo
+#### projeyi kopyalamak için
 ```
 git clone https://github.com/pomf/moepanel
 ```
 
-#### Edit the moepanel/static/php/settings.inc.php file
+#### moepanel/static/php/settings.inc.php dosyasını düzenleyin
 ```
 <?php
 
@@ -59,7 +59,7 @@ define('MOE_URL', 'https://moepanel.uguu.se');
 ```
 
 
-#### Edit gen_pw.php and replace YOURPASSWORDHERE with a password of your liking.
+#### gen_pw.php dosyasını düzenleyin ve YOURPASSWORDHERE'yi istediğiniz bir şifreyle değiştirin.
 ```
 <?php
 $lol = password_hash("YOURPASSWORDHERE", PASSWORD_BCRYPT);
@@ -67,27 +67,26 @@ echo $lol;
 ```
 
 
-#### then execute the file and copy the output.
+#### Daha sonra dosyayı çalıştırın ve çıktıyı kopyalayın.
 ```
 php gen_pw.php
 ```
 
 
 
-#### Run make
+#### Başlatmak için
 ```
 cd /path/to/moe
 make
 ```
 
 
-#### Insert your user into your DB.
+#### Kullanıcınızı DB'nize ekleyin.
 ```
 sqlite3 /var/www/db/your_pomf_db.sq3
 INSERT INTO accounts VALUES(1,'your@email.com','PASSWORD_HASH_FROM_ABOVE',1);
 ```
 
 
-**Then configure your webserver and PHP to serve from dist/ and you're good to go!**
-
+**Ardından web sunucunuzu ve PHP'yi dist/'dan hizmet verecek şekilde yapılandırın ve hazırsınız!**
 
